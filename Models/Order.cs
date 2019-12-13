@@ -17,17 +17,17 @@ namespace Bakery.Models
         // This can be combined with AddPastry (orderAmount and kindOfOrder)
         public void AddBread(int orederAmount)
         {
+            Bread bread = new Bread();
             for(int i = 0; i < orederAmount; i++)
             {
-                Bread bread = new Bread();
                 BreadOrder.Add(bread);
             }
         }
         public void AddPastry(int orederAmount)
         {
+            Pastry pastry = new Pastry();
             for(int i = 0; i < orederAmount; i++)
             {
-                Pastry pastry = new Pastry();
                 PastryOrder.Add(pastry);
             }
         }
@@ -48,15 +48,15 @@ namespace Bakery.Models
                 }
 
                 // Pastry calculation - first $2, second $2 and third half price
-                for(int j = 0; j < PastryOrder.Count; j++)
+                for(int i = 0; i < PastryOrder.Count; i++)
                 {
-                    if((j + 1) % 3 != 0)
+                    if((i + 1) % 3 != 0)
                     {
-                        pastryTotalPrice += PastryOrder[j].Price;
+                        pastryTotalPrice += PastryOrder[i].Price;
                     }
                     else
                     {
-                        pastryTotalPrice += PastryOrder[j].Price / 2;
+                        pastryTotalPrice += PastryOrder[i].Price / 2;
                     }
                 }
             int totalPrice = breadTotalPrice + pastryTotalPrice;

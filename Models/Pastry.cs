@@ -7,7 +7,7 @@ namespace Bakery.Models
 
         public Pastry()
         {
-            Price = 3;
+            Price = 2;
             Name = "Croissant";
         }
     }

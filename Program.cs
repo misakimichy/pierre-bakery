@@ -25,7 +25,7 @@ namespace Bakery
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("We have bread and pastries available today!");
             Console.WriteLine("Bread: A single loaf costs $5. Buy 2, get 1 free!");
-            Console.WriteLine("Pastries: Buy 1 for $1 or 3 for $5.");
+            Console.WriteLine("Pastries: Buy 1 for $2 or 3 for $5.");
         }
 
         public static int TakeBreadOrder()
