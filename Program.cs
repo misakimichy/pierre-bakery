@@ -30,7 +30,7 @@ namespace Bakery
 
         public static int TakeBreadOrder()
         {
-            Console.WriteLine("\n How many loaves of bread would you like to purchase?");
+            Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
             int breadAmount = 0;
             // Check if the input is a number
             bool breadInput = Int32.TryParse(Console.ReadLine(), out breadAmount);
@@ -43,7 +43,7 @@ namespace Bakery
         }
         public static int TakePastryOrder()
         {
-            Console.WriteLine("\n How many pastries would you like to purchase?");
+            Console.WriteLine("\nHow many pastries would you like to purchase?");
             int pastryAmount = 0;
             // Check if the input is a number
             bool pastryInput = Int32.TryParse(Console.ReadLine(), out pastryAmount);
@@ -57,13 +57,16 @@ namespace Bakery
 
         public static void ShowTotal(int breadAmount, int pastryAmount, int totalPrice)
         {
-             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-             Console.WriteLine("            Pierre's Bakery           ");
-             Console.WriteLine($"\n{breadAmount} loaves of ");
-             Console.WriteLine($"\n{pastryAmount} of ");
-             Console.WriteLine($"                Total: ${totalPrice}");
-             Console.WriteLine("\n            See you next time!");
-             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\n────────────────────────────────────");
+            Console.WriteLine("           Pierre's Bakery");
+            Console.WriteLine($"\n    Loaves of baguettes * {breadAmount}");
+            Console.WriteLine($"    Croissants * {pastryAmount}");
+            Console.WriteLine("------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine($"          Total: ${totalPrice}");
+            Console.ResetColor();
+            Console.WriteLine("\n          See you next time!");
+            Console.WriteLine("────────────────────────────────────");
         }
     }
 }
