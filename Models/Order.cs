@@ -6,6 +6,8 @@ namespace Bakery.Models
     {
         public List<Bread> BreadOrder { get; set; }
         public List<Pastry> PastryOrder { get; set; }
+        Bread bread = new Bread();
+        Pastry pastry = new Pastry();
         
         public Order()
         {
@@ -17,7 +19,6 @@ namespace Bakery.Models
         // This can be combined with AddPastry (orderAmount and kindOfOrder)
         public void AddBread(int orederAmount)
         {
-            Bread bread = new Bread();
             for(int i = 0; i < orederAmount; i++)
             {
                 BreadOrder.Add(bread);
@@ -25,7 +26,6 @@ namespace Bakery.Models
         }
         public void AddPastry(int orederAmount)
         {
-            Pastry pastry = new Pastry();
             for(int i = 0; i < orederAmount; i++)
             {
                 PastryOrder.Add(pastry);
@@ -38,27 +38,27 @@ namespace Bakery.Models
             int breadTotalPrice = 0;
             int pastryTotalPrice = 0;
 
-                // Bread calculation - first $5, second $5 and third $0
-                for(int i = 0; i < BreadOrder.Count; i++)
+            // Bread calculation - first $5, second $5 and third $0
+            for(int i = 0; i < BreadOrder.Count; i++)
+            {
+                if((i + 1) % 3 != 0)
                 {
-                    if((i + 1) % 3 != 0)
-                    {
-                        breadTotalPrice += BreadOrder[i].Price;
-                    }
+                    breadTotalPrice += BreadOrder[i].Price;
                 }
+            }
 
-                // Pastry calculation - first $2, second $2 and third half price
-                for(int i = 0; i < PastryOrder.Count; i++)
+            // Pastry calculation - first $2, second $2 and third half price
+            for(int i = 0; i < PastryOrder.Count; i++)
+            {
+                if((i + 1) % 3 != 0)
                 {
-                    if((i + 1) % 3 != 0)
-                    {
-                        pastryTotalPrice += PastryOrder[i].Price;
-                    }
-                    else
-                    {
-                        pastryTotalPrice += PastryOrder[i].Price / 2;
-                    }
+                    pastryTotalPrice += PastryOrder[i].Price;
                 }
+                else
+                {
+                    pastryTotalPrice += PastryOrder[i].Price / 2;
+                }
+            }
             int totalPrice = breadTotalPrice + pastryTotalPrice;
             return totalPrice;
         }

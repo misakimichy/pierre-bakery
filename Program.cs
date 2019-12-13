@@ -14,8 +14,8 @@ namespace Bakery
             int pastryAmount = TakePastryOrder();
             order.AddBread(breadAmount);
             order.AddPastry(pastryAmount);
-
             int totalPrice = order.CalcTotalPrice();
+            ShowTotal(breadAmount, pastryAmount, totalPrice);
         }
 
         public static void WelcomeMessage()
@@ -53,6 +53,17 @@ namespace Bakery
                 return TakePastryOrder();
             }
             return pastryAmount;
+        }
+
+        public static void ShowTotal(int breadAmount, int pastryAmount, int totalPrice)
+        {
+             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+             Console.WriteLine("            Pierre's Bakery           ");
+             Console.WriteLine($"\n{breadAmount} loaves of ");
+             Console.WriteLine($"\n{pastryAmount} of ");
+             Console.WriteLine($"                Total: ${totalPrice}");
+             Console.WriteLine("\n            See you next time!");
+             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 }
