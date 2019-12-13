@@ -34,7 +34,7 @@ namespace Bakery
             int breadAmount = 0;
             // Check if the input is a number
             bool breadInput = Int32.TryParse(Console.ReadLine(), out breadAmount);
-            if(!breadInput)
+            if(!breadInput || breadAmount < 0)
             {
                 Console.WriteLine("Please enter a number");
                 return TakeBreadOrder();
@@ -47,7 +47,7 @@ namespace Bakery
             int pastryAmount = 0;
             // Check if the input is a number
             bool pastryInput = Int32.TryParse(Console.ReadLine(), out pastryAmount);
-            if(!pastryInput)
+            if(!pastryInput || pastryAmount < 0)
             {
                 Console.WriteLine("Please enter a number");
                 return TakePastryOrder();
