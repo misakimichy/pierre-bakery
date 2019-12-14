@@ -14,24 +14,16 @@ namespace Bakery.Models
         }
 
         // Amount of bread purchase is added to the BreadsOrder list
-
-        public void AddBread(int quantity)
+        public void AddBread(Bread bread)
         {
-            Bread bread = new Bread();
-            for(int i = 0; i < quantity; i++)
-            {
-                BreadOrder.Add(bread);
-            }
+            BreadOrder.Add(bread);
         }
 
-        public void AddPastry(int quantity)
+        public void AddPastry(Pastry pastry)
         {
-            Pastry pastry = new Pastry();
-            for(int i = 0; i < quantity; i++)
-            {
-                PastryOrder.Add(pastry);
-            }
+            PastryOrder.Add(pastry);
         }
+
 
         // Calculate and return total price
         public int CalcTotalPrice()

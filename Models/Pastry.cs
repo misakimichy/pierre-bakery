@@ -2,13 +2,13 @@ namespace Bakery.Models
 {
     public class Pastry
     {
-        public int Price { get; set; }
         public string Name { get; set; }
+        public int Price { get; set; }
 
-        public Pastry()
+        public Pastry(string pastryName, int price)
         {
-            Price = 2;
-            Name = "";
+            Name = pastryName;
+            Price = price;
         }
     }
 }
