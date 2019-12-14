@@ -6,14 +6,14 @@ namespace Bakery
 {
     class Program
     {
+        public static Order userOrder = new Order();
+
         public static void Main()
         {
-            Order userOrder = new Order();
             WelcomeMessage();
-            int breadAmount = TakeBreadOrder();
-            int pastryAmount = TakePastryOrder();
-            userOrder.AddBread(breadAmount);
-            userOrder.AddPastry(pastryAmount);
+            // SoliticOrder();
+            int breadAmount = GetBreadMenu();
+            int pastryAmount = GetPastryMenu();
             int totalPrice = userOrder.CalcTotalPrice();
             ShowTotal(breadAmount, pastryAmount, totalPrice);
         }
@@ -30,16 +30,26 @@ namespace Bakery
 
         public static void SoliticOrder()
         {
-            Console.WriteLine("Do you like to purchase bread? (Y for Yes, N for No)");
-            string userInput = Console.ReadLine().ToUpper();
+            string userInput;
+            Console.WriteLine("Would you like to purchase bread? (Y / N)");
+            userInput = Console.ReadLine().ToUpper();
             switch(userInput)
             {
                 case "Y":
-                    // GetBreadKind();
+                    GetBreadMenu();
                     break;
                 case "N":
-                    Console.WriteLine("Do you like to purchase pastries (Y for Yes, N for No");
-                    // GetPastryKind();
+                    Console.WriteLine("Would you like to purchase pastries? (Y / N)");
+                    userInput = Console.ReadLine().ToUpper();
+                    switch(userInput)
+                    {
+                        case "Y":
+                            GetPastryMenu();
+                            break;
+                        case "N":
+                            Console.WriteLine("See you next time!");
+                            break;
+                    }
                     break;
                 default:
                     Console.WriteLine("Please type Y for Yes, N for No.");
@@ -47,54 +57,65 @@ namespace Bakery
                     break;
             }
         }
-        // public static void GetBreadKind()
-        // {
-        //     Console.WriteLine("\nWhat kind of bread do you want to purchase?");
-        //     Console.WriteLine("1: Baguette, 2: Sourdough, 3: Whole Grain Bread");
-        //     int breadKind = 0;
-        //     bool userInput = Int32.TryParse(Console.ReadLine(), out breadKind);
-        //     if(!userInput || breadKind < 0)
-        //     {
-        //         ErrorMessage();
-        //         GetBreadKind();
-        //     }
-        //     switch(breadKind)
-        //     {
-        //         case 1:
-        //             userOrder.AddItem("Baguette", 1);
-        //             break;
-        //         case 2:
-        //             userOrder.AddItem("Sourdough", 1);
-        //             break;
-        //         case 3:
-        //             userOrder.AddItem("Whole Grain Bread", 1);
-        //             break;
-        //     }
-        // }
-        // public static void GetPastryKind()
-        // {
-        //     Console.WriteLine("\nWhat kind of pastries do you want to purchase?");
-        //     Console.WriteLine("1: Croissant, 2: Eclair, 3: Moon Cake");
-        //     int pastryKind = 0;
-        //     bool userInput = Int32.TryParse(Console.ReadLine(), out pastryKind);
-        //     if(!userInput || pastryKind < 0)
-        //     {
-        //         ErrorMessage();
-        //         GetPastryKind();
-        //     }
-        //     switch(pastryKind)
-        //     {
-        //         case 1:
-        //             userOrder.AddItem("Croissant", 2);
-        //             break;
-        //         case 2:
-        //             userOrder.AddItem("Eclair", 2);
-        //             break;
-        //         case 3:
-        //             userOrder.AddItem("Moon Cake", 2);
-        //             break;
-        //     }
-        // }
+        public static int GetBreadMenu()
+        {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("            Bread Menu");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Enter 1 for Whole-Wheat Bread: $5");
+            Console.WriteLine("Enter 2 for Sourdough: $7");
+            Console.WriteLine("Enter 3 for Baguette: $9");
+            Console.WriteLine("Please enter the number from 1 - 3");
+            int userInput = int.Parse(Console.ReadLine());
+            Bread bread = null;
+            switch(userInput)
+            {
+                case 1:
+                    bread = new Bread("Whole-Wheat Bread", 5);
+                    break;
+                case 2:
+                    bread = new Bread("Sourdough", 7);
+                    break;
+                case 3:
+                    bread = new Bread("Baguette", 9);
+                    break;
+                default:
+                    ErrorMessage();
+                    break;
+            }
+            userOrder.AddBread(bread);
+            return TakeBreadOrder();
+        }
+        public static int GetPastryMenu()
+        {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("            Pastry Menu");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Enter 1 for Croissant: $5");
+            Console.WriteLine("Enter 2 for Pain au Chocolat: $7");
+            Console.WriteLine("Enter 3 for Mixed Berry Danish: $9");
+            Console.WriteLine("Please enter the number from 1 - 3");
+            int userInput = int.Parse(Console.ReadLine());
+            Pastry pastry = null;
+            switch(userInput)
+            {
+                case 1:
+                    pastry = new Pastry("Croissant", 5);
+                    break;
+                case 2:
+                    pastry = new Pastry("Pain au Chocola", 7);
+                    break;
+                case 3:
+                    pastry = new Pastry("Mixed Berry Danish", 9);
+                    break;
+                default:
+                    ErrorMessage();
+                    break;
+            }
+            userOrder.AddPastry(pastry);
+            return TakePastryOrder();
+        }
+
         public static int TakeBreadOrder()
         {
             Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
@@ -116,7 +137,7 @@ namespace Bakery
             bool pastryInput = Int32.TryParse(Console.ReadLine(), out pastryAmount);
             if(!pastryInput || pastryAmount < 0)
             {
-                Console.WriteLine("Please enter a number");
+                ErrorMessage();
                 return TakePastryOrder();
             }
             return pastryAmount;
