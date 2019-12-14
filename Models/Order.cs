@@ -14,36 +14,22 @@ namespace Bakery.Models
         }
 
         // Amount of bread purchase is added to the BreadsOrder list
-        public void CountQuantity(int orederAmount, int kind)
+
+        public void AddBread(int quantity)
         {
-            for(int i = 1; i <= orederAmount; i++)
+            Bread bread = new Bread();
+            for(int i = 0; i < quantity; i++)
             {
-                switch(kind)
-                {
-                    case 1:
-                        BreadOrder[i].Quantity++;
-                        break;
-                    case 2:
-                        PastryOrder[i].Quantity++;
-                        break;
-                }
+                BreadOrder.Add(bread);
             }
-            // return breadQuantity;
         }
 
-        public void AddItem(string item, int kind)
+        public void AddPastry(int quantity)
         {
-            for(int i = 0; i < BreadOrder.Count; i++)
+            Pastry pastry = new Pastry();
+            for(int i = 0; i < quantity; i++)
             {
-                switch(kind)
-                {
-                    case 1:
-                        BreadOrder[i].Name = item;
-                        break;
-                    case 2:
-                        PastryOrder[i].Name = item;
-                        break;
-                }
+                PastryOrder.Add(pastry);
             }
         }
 
@@ -60,7 +46,6 @@ namespace Bakery.Models
                     breadTotal += BreadOrder[i].Price;
                 }
             }
-
             // Pastry calculation - first $2, second $2 and third half price
             for(int i = 0; i < PastryOrder.Count; i++)
             {
