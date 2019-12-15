@@ -14,15 +14,22 @@ Create a C# console application for a bakery.
 
 - The application will return the total cost of the order.
 
-- The bakery offers the following deals:
+- The bakery offers a special deal:
 
-    - `Bread`: Buy 2, get 1 free. A single loaf costs $5.
-    - `Pastry`: Buy 1 for $2 or 3 for $5.
+    - `Bread`: Buy 2, get 1 free.
+    - `Pastry`: Buy 2, get 1 half price.
+
+
+| Bread Menu | Price | Pastry Menu | Price
+| :------------- | :------------- | :------------- | :------------- | 
+| Whole-Wheat Bread | $5 | Croissant | $5 |
+| Sourdough Bread | $7 | Pain au Chocolat | $7 |
+| Baguette | $9 | Mixed Berry Danish | $9 |
 
 
 ## Specs
 | Spec | Input | Output |
-| :-------------     | :------------- | :------------- |
+| :------------- | :------------- | :------------- |
 | **$5 for 1 bread and $2 for 1 pastry** | 1 bread and 1 pastries | $10 total ($5 + $2) |
 | **$10 for 3 breads and $5 for 3 pastries** | 3 breads, 3 pastries | $15 total ($10 + $5) |
 | **Enter besides number**| "Hello" | "Please enter a number." |
