@@ -24,45 +24,17 @@ namespace Bakery
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("We have bread and pastries available today!");
             Console.WriteLine("Bread: A single loaf costs $5. Buy 2, get 1 free!");
-            Console.WriteLine("Pastries: Buy 1 for $2 or 3 for $5.");
+            Console.WriteLine("Pastries: Buy 1 for $2 or 3 for $5.\n");
         }
 
-        public static void SoliticOrder()
-        {
-            string userInput;
-            Console.WriteLine("Would you like to purchase bread? (Y / N)");
-            userInput = Console.ReadLine().ToUpper();
-            switch(userInput)
-            {
-                case "Y":
-                    GetBreadMenu();
-                    break;
-                case "N":
-                    Console.WriteLine("Would you like to purchase pastries? (Y / N)");
-                    userInput = Console.ReadLine().ToUpper();
-                    switch(userInput)
-                    {
-                        case "Y":
-                            GetPastryMenu();
-                            break;
-                        case "N":
-                            Console.WriteLine("See you next time!");
-                            break;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Please type Y for Yes, N for No.");
-                    SoliticOrder();
-                    break;
-            }
-        }
+        // Show bread menu and instantiate the bread class based on the user input
         public static int GetBreadMenu()
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("            Bread Menu");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Enter 1 for Whole-Wheat Bread: $5");
-            Console.WriteLine("Enter 2 for Sourdough: $7");
+            Console.WriteLine("Enter 2 for Sourdough Bread: $7");
             Console.WriteLine("Enter 3 for Baguette: $9");
             Console.WriteLine("Please enter the number from 1 - 3");
             int userInput = int.Parse(Console.ReadLine());
@@ -73,7 +45,7 @@ namespace Bakery
                     bread = new Bread("Whole-Wheat Bread", 5);
                     break;
                 case 2:
-                    bread = new Bread("Sourdough", 7);
+                    bread = new Bread("Sourdough Bread", 7);
                     break;
                 case 3:
                     bread = new Bread("Baguette", 9);
@@ -85,6 +57,8 @@ namespace Bakery
             userOrder.AddBread(bread);
             return TakeBreadOrder();
         }
+        
+        // Show pastry menu and instantiate the pastry class based on the user input
         public static int GetPastryMenu()
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -115,6 +89,7 @@ namespace Bakery
             return TakePastryOrder();
         }
 
+        // Get the number of purchase
         public static int TakeBreadOrder()
         {
             Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
@@ -147,6 +122,7 @@ namespace Bakery
             Console.WriteLine("Please enter a number.");
         }
 
+        // Show the type of bread and pastry, each purchase amount and total price.
         public static void ShowTotal(int breadAmount, int pastryAmount, int totalPrice)
         {
             Console.WriteLine("\n────────────────────────────────────");

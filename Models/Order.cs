@@ -49,7 +49,7 @@ namespace Bakery.Models
         {
             int breadTotal = 0;
             int pastryTotal = 0;
-            // Bread calculation - first $5, second $5 and third $0
+            // Bread price calculation - Buy 2, get 1 free
             for(int i = 0; i < BreadOrder.Count; i++)
             {
                 if((i + 1) % 3 != 0)
@@ -57,7 +57,7 @@ namespace Bakery.Models
                     breadTotal += BreadOrder[i].Price;
                 }
             }
-            // Pastry calculation - first $2, second $2 and third half price
+            // Pastry price calculation - Buy 1 for proper price or 3 for proper * 2 + proper/2.
             for(int i = 0; i < PastryOrder.Count; i++)
             {
                 if((i + 1) % 3 != 0)
