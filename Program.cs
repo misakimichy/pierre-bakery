@@ -11,7 +11,6 @@ namespace Bakery
         public static void Main()
         {
             WelcomeMessage();
-            // SoliticOrder();
             int breadAmount = GetBreadMenu();
             int pastryAmount = GetPastryMenu();
             int totalPrice = userOrder.CalcTotalPrice();
@@ -152,8 +151,8 @@ namespace Bakery
         {
             Console.WriteLine("\n────────────────────────────────────");
             Console.WriteLine("           Pierre's Bakery");
-            Console.WriteLine($"\n    Loaves of baguettes * {breadAmount}");
-            Console.WriteLine($"    Croissants * {pastryAmount}");
+            Console.WriteLine($"\n    Loaves of {userOrder.GetBread()} * {breadAmount}");
+            Console.WriteLine($"    {userOrder.GetPastry()} * {pastryAmount}");
             Console.WriteLine("------------------------------------");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"          Total: ${totalPrice}");
