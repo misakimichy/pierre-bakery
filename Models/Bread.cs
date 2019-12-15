@@ -10,5 +10,10 @@ namespace Bakery.Models
             Name = breadName;
             Price = price;
         }
+
+        public string PrintBread()
+        {
+            return this.Name;
+        }
     }
 }

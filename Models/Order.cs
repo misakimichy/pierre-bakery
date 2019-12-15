@@ -24,6 +24,25 @@ namespace Bakery.Models
             PastryOrder.Add(pastry);
         }
 
+        public string GetBread()
+        {
+            string kinds = "";
+            for(int i = 0; i < BreadOrder.Count; i++)
+            {
+                kinds += BreadOrder[i].PrintBread();
+            }
+            return kinds;
+        }
+
+        public string GetPastry()
+        {
+            string kinds = "";
+            for(int i = 0; i < PastryOrder.Count; i++)
+            {
+                kinds += PastryOrder[i].PrintPastry();
+            }
+            return kinds;
+        }
 
         // Calculate and return total price
         public int CalcTotalPrice()
